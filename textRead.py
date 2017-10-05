@@ -54,10 +54,10 @@ with open(relationpath,'r',encoding='utf-8') as relationfile:
     for line in templines:
         newline = line.split('\t')
         newline[5] = newline[5].strip('\n')
-        newline[4] = newline[4][6:]
-        newline[4] = int(newline[4])
-        newline[5] = newline[5][6:]
-        newline[5] = int(newline[5])
+        newline[4] = newline[4][5:]
+        #newline[4] = int(newline[4])
+        newline[5] = newline[5][5:]
+        #newline[5] = int(newline[5])
         newdict = dict(zip(column3,newline))
         allrelation.append(newdict)
 
@@ -115,8 +115,21 @@ def rela2text(reladict,allentity,allabstract):
     ID = reladict['ID']
     arg1 = reladict['arg1']
     arg2 = reladict['arg2']
-    
+    for abdict in allabstract:
+        if abdict['ID']==ID:
+            text = abdict['abstract']
+    for endict in allentity:
+        if endict['ID'] == ID:
+            if endict['T'] = arg1:
+                head = endict[p1]
+            if endict['T'] == arg2:
+                butt = endict[p2]
+    text = text[(head-1):(butt+1)].strip(' ')
+    return text.split(' ')
 
+
+    
+                
 
 
 
